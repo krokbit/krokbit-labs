@@ -16,7 +16,7 @@ export default function WavySphere() {
       uTime: { value: 0 },
       uColor1: { value: new THREE.Color("#00f0ff") },
       uColor2: { value: new THREE.Color("#0022cc") },
-      uMouse: { value: new THREE.Vector2(0, 0) }, // Теперь хранит точные 3D координаты
+      uMouse: { value: new THREE.Vector2(0, 0) },
     }),
     [],
   );
@@ -34,15 +34,19 @@ export default function WavySphere() {
     const { clock, camera } = state;
 
     if (meshRef.current) {
+      // 1. Adaptive Positioning
       const isDesktop = window.innerWidth > 1024;
       const targetX = isDesktop ? 2.2 : 0.0;
-      const targetY = isDesktop ? 0.0 : -1.5;
+
+      // Desktop: centered (0.0). Mobile: shifted slightly up (0.5) to fill empty space
+      const targetY = isDesktop ? 0.0 : 0.5;
 
       meshRef.current.position.x +=
         (targetX - meshRef.current.position.x) * 0.1;
       meshRef.current.position.y +=
         (targetY - meshRef.current.position.y) * 0.1;
 
+      // 2. 2D to 3D Projection for precise mouse tracking
       const vec = new THREE.Vector3(
         mouseGlobal.current.x,
         mouseGlobal.current.y,
@@ -59,13 +63,13 @@ export default function WavySphere() {
 
       if (materialRef.current) {
         materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
-
         materialRef.current.uniforms.uMouse.value.x +=
           (localMousePos.x - materialRef.current.uniforms.uMouse.value.x) * 0.1;
         materialRef.current.uniforms.uMouse.value.y +=
           (localMousePos.y - materialRef.current.uniforms.uMouse.value.y) * 0.1;
       }
 
+      // 3. Base Rotation
       targetRotation.current.x = mouseGlobal.current.y * 0.15;
       targetRotation.current.y = mouseGlobal.current.x * 0.15;
 
@@ -89,7 +93,7 @@ export default function WavySphere() {
         depthWrite={false}
         vertexShader={`
           uniform float uTime;
-          uniform vec2 uMouse;
+          uniform vec2 uMouse; 
           
           varying vec2 vUv;
           varying vec3 vPosition;
@@ -100,13 +104,13 @@ export default function WavySphere() {
             
             vec3 p = position;
             
+            // Noise calculations
             float noise = sin(p.x * 2.0 + uTime) * cos(p.y * 2.0 + uTime) * sin(p.z * 2.0 + uTime);
             p += normal * noise * 0.4;
             
+            // Mouse interaction pull
             float dist = distance(p.xy, uMouse);
-            
             float pull = smoothstep(1.5, 0.0, dist);
-            
             p += normal * pull * 0.8;
             
             gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
@@ -123,6 +127,7 @@ export default function WavySphere() {
             float mixValue = (vPosition.y + 1.5) / 3.0 + sin(uTime * 0.5) * 0.2;
             vec3 color = mix(uColor1, uColor2, clamp(mixValue, 0.0, 1.0));
             
+            // Neon HDR intensity multiplier
             float intensity = 1.5; 
             gl_FragColor = vec4(color * intensity, 0.3);
           }
