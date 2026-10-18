@@ -12,7 +12,6 @@ export default function HeroCanvas() {
         className="pointer-events-none"
       >
         <WavySphere />
-
         <EffectComposer>
           <Bloom luminanceThreshold={0.5} mipmapBlur intensity={1.2} />
         </EffectComposer>
