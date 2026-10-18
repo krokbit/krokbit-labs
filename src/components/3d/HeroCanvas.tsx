@@ -13,7 +13,7 @@ export default function HeroCanvas() {
       >
         <WavySphere />
         <EffectComposer>
-          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={1.2} />
+          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={0.7} />
         </EffectComposer>
       </Canvas>
     </div>
