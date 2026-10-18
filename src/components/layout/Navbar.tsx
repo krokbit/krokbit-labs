@@ -1,7 +1,18 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Navbar({ locale }: { locale: string }) {
+  const pathname = usePathname();
   const toggleLocale = locale === "en" ? "cs" : "en";
+
+  const getRedirectPath = () => {
+    if (!pathname) return `/${toggleLocale}`;
+    const segments = pathname.split("/");
+    segments[1] = toggleLocale;
+    return segments.join("/");
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
@@ -14,7 +25,6 @@ export default function Navbar({ locale }: { locale: string }) {
         </Link>
 
         <nav className="hidden md:flex gap-8 text-sm text-gray-400">
-          {/* Указываем реальный путь до папки library */}
           <Link
             href={`/${locale}/library`}
             className="hover:text-white transition-colors"
@@ -31,7 +41,7 @@ export default function Navbar({ locale }: { locale: string }) {
 
         <div className="flex items-center gap-4 text-sm font-medium">
           <Link
-            href={`/${toggleLocale}`}
+            href={getRedirectPath()}
             className="text-gray-400 hover:text-white transition-colors uppercase"
           >
             {locale} | {toggleLocale}
