@@ -14,7 +14,11 @@ export default function Navbar({ locale }: { locale: string }) {
         </Link>
 
         <nav className="hidden md:flex gap-8 text-sm text-gray-400">
-          <Link href="#" className="hover:text-white transition-colors">
+          {/* Указываем реальный путь до папки library */}
+          <Link
+            href={`/${locale}/library`}
+            className="hover:text-white transition-colors"
+          >
             Components
           </Link>
           <Link href="#" className="hover:text-white transition-colors">
