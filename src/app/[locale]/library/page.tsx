@@ -1,25 +1,28 @@
 import Link from "next/link";
+import { getDictionary } from "@/get-dictionary";
 
-export default function ComponentsPage({
+export default async function ComponentsPage({
   params: { locale },
 }: {
-  params: { locale: string };
+  params: { locale: "en" | "cs" };
 }) {
+  const dict = await getDictionary(locale);
+
   const categories = [
     {
-      title: "Wavy Sphere",
-      desc: "Interactive WebGL sphere with Bloom post-processing.",
-      href: `/${locale}/components/wavy-sphere`,
+      title: dict.library.page.components.wavySphere.title,
+      desc: dict.library.page.components.wavySphere.desc,
+      href: `/${locale}/library/wavy-sphere`,
     },
     {
-      title: "Buttons",
-      desc: "Highly optimized interactive buttons.",
-      href: `/${locale}/components/buttons`,
+      title: dict.library.page.components.buttons.title,
+      desc: dict.library.page.components.buttons.desc,
+      href: `/${locale}/library/buttons`,
     },
     {
-      title: "Cards",
-      desc: "Glassmorphism and 3D card layouts.",
-      href: `/${locale}/components/cards`,
+      title: dict.library.page.components.cards.title,
+      desc: dict.library.page.components.cards.desc,
+      href: `/${locale}/library/cards`,
     },
   ];
 
@@ -27,12 +30,9 @@ export default function ComponentsPage({
     <div className="p-8 lg:p-12 max-w-5xl mx-auto">
       <div className="mb-12">
         <h1 className="text-4xl font-bold text-white mb-4">
-          Components Library
+          {dict.library.page.title}
         </h1>
-        <p className="text-gray-400 text-lg">
-          Browse our collection of premium UI and WebGL components. Ready to
-          copy-paste into your Next.js project.
-        </p>
+        <p className="text-gray-400 text-lg">{dict.library.page.description}</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

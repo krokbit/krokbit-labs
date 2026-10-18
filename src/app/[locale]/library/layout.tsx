@@ -1,13 +1,16 @@
 import Navbar from "@/components/layout/Navbar";
 import Link from "next/link";
+import { getDictionary } from "@/get-dictionary";
 
-export default function ComponentsLayout({
+export default async function ComponentsLayout({
   children,
   params: { locale },
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: { locale: "en" | "cs" };
 }) {
+  const dict = await getDictionary(locale);
+
   return (
     <div className="min-h-screen bg-black text-white">
       <Navbar locale={locale} />
@@ -16,14 +19,16 @@ export default function ComponentsLayout({
         <aside className="w-64 border-r border-white/10 hidden md:block overflow-y-auto">
           <nav className="p-6 space-y-8">
             <div>
-              <h4 className="font-semibold text-white mb-3">Getting Started</h4>
+              <h4 className="font-semibold text-white mb-3">
+                {dict.library.sidebar.gettingStarted}
+              </h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
                   <Link
                     href={`/${locale}/library/installation`}
                     className="hover:text-white transition-colors"
                   >
-                    Installation
+                    {dict.library.sidebar.installation}
                   </Link>
                 </li>
                 <li>
@@ -31,21 +36,23 @@ export default function ComponentsLayout({
                     href={`/${locale}/library/cli`}
                     className="hover:text-white transition-colors"
                   >
-                    CLI
+                    {dict.library.sidebar.cli}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-3">WebGL & 3D</h4>
+              <h4 className="font-semibold text-white mb-3">
+                {dict.library.sidebar.webgl}
+              </h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
                   <Link
                     href={`/${locale}/library/wavy-sphere`}
                     className="hover:text-white transition-colors"
                   >
-                    Wavy Sphere
+                    {dict.library.sidebar.wavySphere}
                   </Link>
                 </li>
                 <li>
@@ -53,29 +60,31 @@ export default function ComponentsLayout({
                     href={`/${locale}/library/particles`}
                     className="hover:text-white transition-colors"
                   >
-                    Particles Grid
+                    {dict.library.sidebar.particlesGrid}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-semibold text-white mb-3">UI Elements</h4>
+              <h4 className="font-semibold text-white mb-3">
+                {dict.library.sidebar.uiElements}
+              </h4>
               <ul className="space-y-2 text-sm text-gray-400">
                 <li>
                   <Link
-                    href={`/${locale}/components/buttons`}
+                    href={`/${locale}/library/buttons`}
                     className="hover:text-white transition-colors"
                   >
-                    Buttons
+                    {dict.library.sidebar.buttons}
                   </Link>
                 </li>
                 <li>
                   <Link
-                    href={`/${locale}/components/cards`}
+                    href={`/${locale}/library/cards`}
                     className="hover:text-white transition-colors"
                   >
-                    Cards
+                    {dict.library.sidebar.cards}
                   </Link>
                 </li>
               </ul>

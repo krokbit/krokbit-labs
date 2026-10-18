@@ -9,5 +9,36 @@
     "description": "Copy-paste premium, highly optimized interactive 3D & WebGL assets to elevate your interfaces.",
     "exploreButton": "Explore Library",
     "cliCommand": "npx @krokbit/labs init"
+  },
+  "library": {
+    "sidebar": {
+      "gettingStarted": "Getting Started",
+      "installation": "Installation",
+      "cli": "CLI",
+      "webgl": "WebGL & 3D",
+      "wavySphere": "Wavy Sphere",
+      "particlesGrid": "Particles Grid",
+      "uiElements": "UI Elements",
+      "buttons": "Buttons",
+      "cards": "Cards"
+    },
+    "page": {
+      "title": "Components Library",
+      "description": "Browse our collection of premium UI and WebGL components. Ready to copy-paste into your Next.js project.",
+      "components": {
+        "wavySphere": {
+          "title": "Wavy Sphere",
+          "desc": "Interactive WebGL sphere with Bloom post-processing."
+        },
+        "buttons": {
+          "title": "Buttons",
+          "desc": "Highly optimized interactive buttons."
+        },
+        "cards": {
+          "title": "Cards",
+          "desc": "Glassmorphism and 3D card layouts."
+        }
+      }
+    }
   }
 }

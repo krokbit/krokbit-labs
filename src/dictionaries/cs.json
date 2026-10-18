@@ -9,5 +9,36 @@
     "description": "Zkopírujte a vložte prémiové, vysoce optimalizované interaktivní 3D a WebGL prvky pro vylepšení vašich rozhraní.",
     "exploreButton": "Prozkoumat knihovnu",
     "cliCommand": "npx @krokbit/labs init"
+  },
+  "library": {
+    "sidebar": {
+      "gettingStarted": "Začínáme",
+      "installation": "Instalace",
+      "cli": "CLI",
+      "webgl": "WebGL a 3D",
+      "wavySphere": "Wavy Sphere",
+      "particlesGrid": "Particles Grid",
+      "uiElements": "UI Prvky",
+      "buttons": "Tlačítka",
+      "cards": "Karty"
+    },
+    "page": {
+      "title": "Knihovna komponent",
+      "description": "Projděte si naši sbírku prémiových UI a WebGL komponent. Připraveno ke zkopírování do vašeho Next.js projektu.",
+      "components": {
+        "wavySphere": {
+          "title": "Wavy Sphere",
+          "desc": "Interaktivní WebGL sféra s post-processingem Bloom."
+        },
+        "buttons": {
+          "title": "Tlačítka",
+          "desc": "Vysoce optimalizovaná interaktivní tlačítka."
+        },
+        "cards": {
+          "title": "Karty",
+          "desc": "Glassmorphismus a 3D rozložení karet."
+        }
+      }
+    }
   }
 }
