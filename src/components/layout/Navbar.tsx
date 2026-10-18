@@ -120,6 +120,7 @@ export default function Navbar({ locale }: { locale: string }) {
                 >
                   <Link
                     href={link.href}
+                    onClick={() => setIsOpen(false)}
                     className="text-5xl font-light text-white tracking-wide block focus:text-[#00f0ff] transition-colors"
                   >
                     {link.label}

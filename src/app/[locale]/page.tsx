@@ -1,6 +1,7 @@
 import { getDictionary } from "@/get-dictionary";
 import Navbar from "@/components/layout/Navbar";
 import HeroCanvas from "@/components/3d/HeroCanvas";
+import Link from "next/link";
 
 export default async function Home({
   params: { locale },
@@ -43,9 +44,12 @@ export default async function Home({
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+              <Link
+                href={`/${locale}/library`}
+                className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)] text-center"
+              >
                 {dict.home.exploreButton}
-              </button>
+              </Link>
               <div className="flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg text-sm text-gray-300 font-mono w-full sm:w-auto shadow-lg">
                 <span>{dict.home.cliCommand}</span>
               </div>
