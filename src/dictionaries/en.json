@@ -1,5 +1,13 @@
 {
   "home": {
-    "title": "Krokbit Labs"
+    "badges": {
+      "fps": "60 FPS",
+      "tailwind": "Tailwind CSS",
+      "webgl": "WebGL 2.0"
+    },
+    "title": "High-Performance UI Components",
+    "description": "Copy-paste premium, highly optimized interactive 3D & WebGL assets to elevate your interfaces.",
+    "exploreButton": "Explore Library",
+    "cliCommand": "npx @krokbit/labs init"
   }
 }

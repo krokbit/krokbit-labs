@@ -1,5 +1,13 @@
 {
   "home": {
-    "title": "Krokbit Laboratoře"
+    "badges": {
+      "fps": "60 FPS",
+      "tailwind": "Tailwind CSS",
+      "webgl": "WebGL 2.0"
+    },
+    "title": "Vysoce výkonné UI komponenty",
+    "description": "Zkopírujte a vložte prémiové, vysoce optimalizované interaktivní 3D a WebGL prvky pro vylepšení vašich rozhraní.",
+    "exploreButton": "Prozkoumat knihovnu",
+    "cliCommand": "npx @krokbit/labs init"
   }
 }
