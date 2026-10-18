@@ -1,7 +1,6 @@
 import Link from "next/link";
 
 export default function Navbar({ locale }: { locale: string }) {
-  // Простая смена локали для роутинга
   const toggleLocale = locale === "en" ? "cs" : "en";
 
   return (

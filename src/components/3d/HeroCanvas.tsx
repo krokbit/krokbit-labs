@@ -1,17 +1,21 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import WavySphere from "./WavySphere";
 
 export default function HeroCanvas() {
   return (
-    <div className="w-full h-[500px] lg:h-screen lg:absolute lg:top-0 lg:right-0 lg:w-[65%] z-0 pointer-events-none">
-      {/* pointer-events-auto возвращает интерактивность только самой сцене */}
+    <div className="fixed top-0 left-0 w-screen h-screen z-[-1] pointer-events-none">
       <Canvas
-        camera={{ position: [0, 0, 6], fov: 45 }}
-        className="pointer-events-auto"
+        camera={{ position: [0, 0, 9], fov: 45 }}
+        className="pointer-events-none"
       >
         <WavySphere />
+
+        <EffectComposer>
+          <Bloom luminanceThreshold={0.5} mipmapBlur intensity={1.2} />
+        </EffectComposer>
       </Canvas>
     </div>
   );

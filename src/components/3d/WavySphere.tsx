@@ -8,25 +8,19 @@ export default function WavySphere() {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
-  // Глобальная мышь для вращения всей сферы (работает по всему экрану)
   const mouseGlobal = useRef(new THREE.Vector2(0, 0));
-  // Целевой вектор для плавного lerp-вращения
   const targetRotation = useRef(new THREE.Vector2(0, 0));
 
   const uniforms = useMemo(
     () => ({
-      // uTime управляет скоростью "кипения" волн
       uTime: { value: 0 },
-      // Цвета
       uColor1: { value: new THREE.Color("#00f0ff") },
       uColor2: { value: new THREE.Color("#0022cc") },
-      // Вектор мыши для передачи в шейдер (локальный, внутри канваса)
-      uMouse: { value: new THREE.Vector2(0, 0) },
+      uMouse: { value: new THREE.Vector2(0, 0) }, // Теперь хранит точные 3D координаты
     }),
     [],
   );
 
-  // Перехват глобальной мыши только для поворота оси (чтобы сфера следила за курсором всегда)
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
       mouseGlobal.current.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -37,23 +31,41 @@ export default function WavySphere() {
   }, []);
 
   useFrame((state) => {
-    const { clock, pointer } = state;
-
-    if (materialRef.current) {
-      // ВОЗВРАЩЕНО: Оригинальная скорость волн (без умножения на 0.25)
-      materialRef.current.uniforms.uTime.value = clock.getElapsedTime() * 0.45;
-
-      // Передаем координаты мыши в шейдер.
-      // pointer - это внутренние координаты R3F (от -1 до 1 строго внутри Canvas)
-      // Lerp здесь делает притяжение вершин чуть более плавным
-      materialRef.current.uniforms.uMouse.value.x +=
-        (pointer.x - materialRef.current.uniforms.uMouse.value.x) * 0.1;
-      materialRef.current.uniforms.uMouse.value.y +=
-        (pointer.y - materialRef.current.uniforms.uMouse.value.y) * 0.1;
-    }
+    const { clock, camera } = state;
 
     if (meshRef.current) {
-      // СОХРАНЕНО: Медленное и плавное вращение всей конструкции за мышью
+      const isDesktop = window.innerWidth > 1024;
+      const targetX = isDesktop ? 2.2 : 0.0;
+      const targetY = isDesktop ? 0.0 : -1.5;
+
+      meshRef.current.position.x +=
+        (targetX - meshRef.current.position.x) * 0.1;
+      meshRef.current.position.y +=
+        (targetY - meshRef.current.position.y) * 0.1;
+
+      const vec = new THREE.Vector3(
+        mouseGlobal.current.x,
+        mouseGlobal.current.y,
+        0.5,
+      );
+      vec.unproject(camera);
+      vec.sub(camera.position).normalize();
+      const distance = -camera.position.z / vec.z;
+      const worldMousePos = new THREE.Vector3()
+        .copy(camera.position)
+        .add(vec.multiplyScalar(distance));
+
+      const localMousePos = worldMousePos.sub(meshRef.current.position);
+
+      if (materialRef.current) {
+        materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
+
+        materialRef.current.uniforms.uMouse.value.x +=
+          (localMousePos.x - materialRef.current.uniforms.uMouse.value.x) * 0.1;
+        materialRef.current.uniforms.uMouse.value.y +=
+          (localMousePos.y - materialRef.current.uniforms.uMouse.value.y) * 0.1;
+      }
+
       targetRotation.current.x = mouseGlobal.current.y * 0.15;
       targetRotation.current.y = mouseGlobal.current.x * 0.15;
 
@@ -73,7 +85,7 @@ export default function WavySphere() {
         uniforms={uniforms}
         wireframe={true}
         transparent={true}
-        blending={THREE.AdditiveBlending}
+        toneMapped={false}
         depthWrite={false}
         vertexShader={`
           uniform float uTime;
@@ -88,30 +100,13 @@ export default function WavySphere() {
             
             vec3 p = position;
             
-            // 1. БАЗОВАЯ ВОЛНА (Математика искажений)
             float noise = sin(p.x * 2.0 + uTime) * cos(p.y * 2.0 + uTime) * sin(p.z * 2.0 + uTime);
-            
-            // ВОЗВРАЩЕНО: Оригинальная амплитуда 0.4 (была урезана до 0.25)
-            // КРУТИТЬ ЗДЕСЬ: Если волны слишком сильные, уменьшай 0.4 до 0.3
             p += normal * noise * 0.4;
             
-            // 2. ВЗАИМОДЕЙСТВИЕ С МЫШЬЮ
-            // Масштабируем 2D координаты курсора (-1..1) в 3D пространство (умножение на 3.5)
-            // КРУТИТЬ ЗДЕСЬ: Если зона реакции не совпадает с курсором визуально, меняй 3.5
-            vec2 mouseScaled = uMouse * 3.5;
+            float dist = distance(p.xy, uMouse);
             
-            // Вычисляем дистанцию от текущей вершины до курсора
-            float dist = distance(p.xy, mouseScaled);
+            float pull = smoothstep(1.5, 0.0, dist);
             
-            // radius определяет, насколько широко от курсора реагируют вершины (1.5 - оптимально)
-            float radius = 1.5;
-            
-            // smoothstep создает плавный градиент притяжения: 
-            // 1.0 в самом центре курсора, 0.0 на границе радиуса
-            float pull = smoothstep(radius, 0.0, dist);
-            
-            // Применяем притяжение. Умножаем нормаль на силу тяги.
-            // КРУТИТЬ ЗДЕСЬ: 0.8 - это сила притяжения (насколько сильно вершины выпирают)
             p += normal * pull * 0.8;
             
             gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
@@ -128,8 +123,8 @@ export default function WavySphere() {
             float mixValue = (vPosition.y + 1.5) / 3.0 + sin(uTime * 0.5) * 0.2;
             vec3 color = mix(uColor1, uColor2, clamp(mixValue, 0.0, 1.0));
             
-            float intensity = 1.2;
-            gl_FragColor = vec4(color * intensity, 0.6);
+            float intensity = 1.5; 
+            gl_FragColor = vec4(color * intensity, 0.3);
           }
         `}
       />
