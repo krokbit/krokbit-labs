@@ -39,6 +39,17 @@
           "desc": "Glassmorphism and 3D card layouts."
         }
       }
+    },
+    "viewer": {
+      "preview": "Preview",
+      "code": "Code",
+      "copy": "Copy code",
+      "copied": "Copied!"
+    },
+    "wavySpherePage": {
+      "title": "Wavy Sphere",
+      "description": "Custom GLSL wireframe icosahedron with 3D mouse unprojection and HDR Bloom.",
+      "installTitle": "Installation"
     }
   }
 }

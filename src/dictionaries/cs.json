@@ -39,6 +39,17 @@
           "desc": "Glassmorphismus a 3D rozložení karet."
         }
       }
+    },
+    "viewer": {
+      "preview": "Náhled",
+      "code": "Kód",
+      "copy": "Kopírovat kód",
+      "copied": "Zkopírováno!"
+    },
+    "wavySpherePage": {
+      "title": "Wavy Sphere",
+      "description": "Vlastní GLSL drátěný ikosaedr s 3D projekcí myši a HDR Bloom efektem.",
+      "installTitle": "Instalace"
     }
   }
 }
