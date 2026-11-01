@@ -64,11 +64,11 @@ export default function ComponentViewer({
 
       <div className="relative w-full max-w-full overflow-hidden">
         {activeTab === "preview" ? (
-          <div className="min-h-[360px] sm:h-[450px] w-full flex items-center justify-center relative overflow-hidden bg-grid-pattern">
+          <div className="h-[380px] sm:h-[460px] w-full flex items-center justify-center relative overflow-hidden bg-grid-pattern">
             {children}
           </div>
         ) : (
-          <div className="w-full max-w-full overflow-x-auto bg-[#050505] max-h-[360px] sm:max-h-[450px] overflow-y-auto">
+          <div className="w-full max-w-full overflow-x-auto bg-[#050505] h-[380px] sm:h-[460px] overflow-y-auto">
             <pre className="p-4 sm:p-6 text-xs font-mono text-gray-300 leading-relaxed w-max min-w-full">
               <code>{code}</code>
             </pre>

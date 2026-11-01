@@ -10,10 +10,10 @@ export default async function TemplatesPage({
   const dict = await getDictionary(locale);
 
   return (
-    <div className="min-h-dvh bg-black text-white flex flex-col">
+    <div className="h-dvh w-full overflow-y-auto overflow-x-hidden bg-black text-white flex flex-col">
       <Navbar locale={locale} />
 
-      <main className="flex-1 pt-24 pb-20 px-6 bg-grid-pattern">
+      <main className="flex-1 pt-24 pb-28 px-6 bg-grid-pattern">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="max-w-2xl">
             <span className="px-3 py-1 text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-400/20 rounded-full inline-block mb-4">
@@ -28,7 +28,7 @@ export default async function TemplatesPage({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
+            {/* Card 1 */}
             <div className="group relative rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-6 flex flex-col justify-between hover:border-white/25 transition-all">
               <div>
                 <div className="h-44 rounded-xl bg-gradient-to-br from-[#00f0ff]/20 via-blue-900/20 to-black border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
@@ -53,6 +53,7 @@ export default async function TemplatesPage({
               </Link>
             </div>
 
+            {/* Card 2 */}
             <div className="group relative rounded-2xl border border-white/10 bg-white/[0.02] backdrop-blur-xl p-6 flex flex-col justify-between hover:border-white/25 transition-all">
               <div>
                 <div className="h-44 rounded-xl bg-gradient-to-br from-emerald-500/20 via-emerald-950/30 to-black border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
@@ -81,6 +82,7 @@ export default async function TemplatesPage({
               </Link>
             </div>
 
+            {/* Card 3: Krokbit Studio */}
             <div className="relative rounded-2xl border border-emerald-400/30 bg-gradient-to-b from-emerald-500/[0.07] to-black p-6 flex flex-col justify-between shadow-[0_0_40px_rgba(52,211,153,0.1)]">
               <div>
                 <div className="h-44 rounded-xl bg-black/80 border border-emerald-400/20 mb-6 flex flex-col items-center justify-center p-4 relative overflow-hidden">

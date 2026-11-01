@@ -1,24 +1,27 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
 import * as THREE from "three";
 
-function InteractiveForceField() {
+function InteractiveForceField({
+  pointerRef,
+}: {
+  pointerRef: React.MutableRefObject<THREE.Vector2>;
+}) {
   const pointsRef = useRef<THREE.Points>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
-  const mouseGlobal = useRef(new THREE.Vector2(0, 0));
 
   const positions = useMemo(() => {
     const pts: number[] = [];
-    const rings = 38;
-    const maxRadius = 4.2;
+    const rings = 44;
+    const maxRadius = 4.8;
 
     for (let r = 1; r <= rings; r++) {
       const radius = (r / rings) * maxRadius;
       const circumference = 2 * Math.PI * radius;
-      const count = Math.floor(circumference / 0.14);
+      const count = Math.floor(circumference / 0.13);
 
       for (let i = 0; i < count; i++) {
         const angle = (i / count) * Math.PI * 2;
@@ -32,21 +35,12 @@ function InteractiveForceField() {
     () => ({
       uTime: { value: 0 },
       uMouse: { value: new THREE.Vector2(0, 0) },
-      uColorBase: { value: new THREE.Color("#0044ff") },
+      uColorBase: { value: new THREE.Color("#0033cc") },
       uColorActive: { value: new THREE.Color("#00f0ff") },
       uColorPeak: { value: new THREE.Color("#34d399") },
     }),
     []
   );
-
-  useEffect(() => {
-    const handlePointerMove = (e: PointerEvent) => {
-      mouseGlobal.current.x = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseGlobal.current.y = -(e.clientY / window.innerHeight) * 2 + 1;
-    };
-    window.addEventListener("pointermove", handlePointerMove);
-    return () => window.removeEventListener("pointermove", handlePointerMove);
-  }, []);
 
   useFrame(({ clock, camera }) => {
     const t = clock.getElapsedTime();
@@ -54,8 +48,8 @@ function InteractiveForceField() {
     if (materialRef.current) {
       materialRef.current.uniforms.uTime.value = t;
 
-      const targetX = mouseGlobal.current.x * 3.5;
-      const targetZ = -mouseGlobal.current.y * 3.5;
+      const targetX = pointerRef.current.x * 3.2;
+      const targetZ = -pointerRef.current.y * 3.2;
 
       materialRef.current.uniforms.uMouse.value.x +=
         (targetX - materialRef.current.uniforms.uMouse.value.x) * 0.12;
@@ -64,8 +58,8 @@ function InteractiveForceField() {
     }
 
     if (pointsRef.current) {
-      pointsRef.current.rotation.y = t * 0.08 + mouseGlobal.current.x * 0.25;
-      pointsRef.current.rotation.x = 0.55 + mouseGlobal.current.y * 0.15;
+      pointsRef.current.rotation.y = t * 0.08 + pointerRef.current.x * 0.25;
+      pointsRef.current.rotation.x = 0.48 + pointerRef.current.y * 0.15;
     }
 
     camera.lookAt(0, 0, 0);
@@ -98,19 +92,17 @@ function InteractiveForceField() {
             float distFromCenter = length(p.xz);
             vDistCenter = distFromCenter;
 
-            // Радиальная пульсация из центра
-            float baseWave = sin(distFromCenter * 2.2 - uTime * 2.4) * 0.25;
+            float baseWave = sin(distFromCenter * 2.0 - uTime * 2.2) * 0.28;
 
-            // Гравитационный импульс от пальца или мыши
             float distToMouse = distance(p.xz, uMouse);
-            float force = smoothstep(2.0, 0.0, distToMouse);
-            float ripple = sin(distToMouse * 5.0 - uTime * 6.0) * force * 0.55;
+            float force = smoothstep(2.2, 0.0, distToMouse);
+            float ripple = sin(distToMouse * 4.5 - uTime * 6.0) * force * 0.6;
 
-            p.y += baseWave + ripple + (force * 0.65);
-            vEnergy = clamp((p.y + 0.4) / 1.4 + force * 0.8, 0.0, 1.0);
+            p.y += baseWave + ripple + (force * 0.7);
+            vEnergy = clamp((p.y + 0.4) / 1.3 + force * 0.85, 0.0, 1.0);
 
             vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
-            gl_PointSize = (18.0 + force * 16.0) / -mvPosition.z;
+            gl_PointSize = (24.0 + force * 20.0) / -mvPosition.z;
             gl_Position = projectionMatrix * mvPosition;
           }
         `}
@@ -125,14 +117,12 @@ function InteractiveForceField() {
             float d = length(gl_PointCoord - vec2(0.5));
             if (d > 0.5) discard;
 
-            // Мягкое свечение каждой частицы
             float glow = smoothstep(0.5, 0.05, d);
             vec3 col = mix(uColorBase, uColorActive, vEnergy);
-            col = mix(col, uColorPeak, smoothstep(0.6, 1.0, vEnergy));
+            col = mix(col, uColorPeak, smoothstep(0.55, 1.0, vEnergy));
 
-            // Плавное растворение краев диска
-            float edgeFade = smoothstep(4.2, 2.8, vDistCenter);
-            gl_FragColor = vec4(col * 1.4, glow * edgeFade * 0.9);
+            float edgeFade = smoothstep(4.8, 3.2, vDistCenter);
+            gl_FragColor = vec4(col * 1.5, glow * edgeFade * 0.95);
           }
         `}
       />
@@ -141,15 +131,29 @@ function InteractiveForceField() {
 }
 
 export default function ParticlesPreviewCanvas() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const pointerRef = useRef(new THREE.Vector2(0, 0));
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    pointerRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    pointerRef.current.y = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+  };
+
   return (
-    <div className="w-full h-full relative touch-pan-y">
+    <div
+      ref={containerRef}
+      onPointerMove={handlePointerMove}
+      className="w-full h-full relative touch-pan-y"
+    >
       <Canvas
-        camera={{ position: [0, 3.2, 6.2], fov: 45 }}
-        style={{ touchAction: "pan-y" }}
+        camera={{ position: [0, 2.3, 4.4], fov: 50 }}
+        style={{ touchAction: "pan-y", width: "100%", height: "100%" }}
       >
-        <InteractiveForceField />
+        <InteractiveForceField pointerRef={pointerRef} />
         <EffectComposer>
-          <Bloom luminanceThreshold={0.15} mipmapBlur intensity={0.65} />
+          <Bloom luminanceThreshold={0.12} mipmapBlur intensity={0.75} />
         </EffectComposer>
       </Canvas>
     </div>

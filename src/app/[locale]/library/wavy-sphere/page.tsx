@@ -130,11 +130,14 @@ export default async function WavySpherePage({
         <SpherePreviewCanvas />
       </ComponentViewer>
 
-      <div className="space-y-3">
+      <div className="space-y-4">
         <h2 className="text-xl font-semibold text-white">
           {dict.library.wavySpherePage.installTitle}
         </h2>
-        <div className="p-4 bg-[#050505] border border-white/10 rounded-xl font-mono text-xs text-gray-300 leading-relaxed break-words">
+        <div className="p-4 bg-[#050505] border border-emerald-400/30 rounded-xl font-mono text-xs text-emerald-400 leading-relaxed break-all">
+          npx shadcn@latest add https://labs.krokbit.cz/r/wavy-sphere.json
+        </div>
+        <div className="p-4 bg-[#050505] border border-white/10 rounded-xl font-mono text-xs text-gray-400 leading-relaxed break-words">
           npm install three @types/three @react-three/fiber @react-three/postprocessing
         </div>
       </div>
