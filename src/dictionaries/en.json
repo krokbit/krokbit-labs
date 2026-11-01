@@ -50,6 +50,11 @@
       "title": "Wavy Sphere",
       "description": "Custom GLSL wireframe icosahedron with 3D mouse unprojection and HDR Bloom.",
       "installTitle": "Installation"
+    },
+    "buttonsPage": {
+      "title": "Interactive Buttons",
+      "description": "High-conversion B2B buttons with animated borders, glow states, and tactile micro-interactions.",
+      "usageTitle": "Dependencies"
     }
   }
 }

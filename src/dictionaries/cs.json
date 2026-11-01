@@ -50,6 +50,11 @@
       "title": "Wavy Sphere",
       "description": "Vlastní GLSL drátěný ikosaedr s 3D projekcí myši a HDR Bloom efektem.",
       "installTitle": "Instalace"
+    },
+    "buttonsPage": {
+      "title": "Interaktivní tlačítka",
+      "description": "Vysoce konverzní B2B tlačítka s animovanými okraji, světelnými efekty a mikro-interakcemi.",
+      "usageTitle": "Závislosti"
     }
   }
 }
