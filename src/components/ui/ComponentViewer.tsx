@@ -30,7 +30,6 @@ export default function ComponentViewer({
 
   return (
     <div className="border border-white/10 rounded-xl overflow-hidden bg-black/60 backdrop-blur-md">
-      {/* Верхняя панель с табами и кнопкой копирования */}
       <div className="flex items-center justify-between px-4 py-3 border-b border-white/10 bg-white/[0.02]">
         <div className="flex gap-2">
           <button
@@ -63,14 +62,13 @@ export default function ComponentViewer({
         </button>
       </div>
 
-      {/* Контентная часть */}
       <div className="relative">
         {activeTab === "preview" ? (
-          <div className="h-[450px] w-full flex items-center justify-center relative overflow-hidden bg-grid-pattern">
+          <div className="h-[340px] sm:h-[450px] w-full flex items-center justify-center relative overflow-hidden bg-grid-pattern">
             {children}
           </div>
         ) : (
-          <pre className="p-6 text-xs font-mono text-gray-300 overflow-x-auto max-h-[450px] overflow-y-auto bg-[#050505] leading-relaxed">
+          <pre className="p-4 sm:p-6 text-xs font-mono text-gray-300 overflow-x-auto max-h-[340px] sm:max-h-[450px] overflow-y-auto bg-[#050505] leading-relaxed">
             <code>{code}</code>
           </pre>
         )}

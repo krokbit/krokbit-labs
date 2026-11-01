@@ -6,11 +6,18 @@ import WavySphere from "./WavySphere";
 
 export default function SpherePreviewCanvas() {
   return (
-    <div className="w-full h-full relative">
-      <Canvas camera={{ position: [0, 0, 5.5], fov: 45 }}>
+    <div className="w-full h-full relative touch-pan-y">
+      <Canvas
+        camera={{ position: [0, 0, 6.2], fov: 45 }}
+        style={{ touchAction: "pan-y" }}
+      >
         <WavySphere centered={true} />
         <EffectComposer>
-          <Bloom luminanceThreshold={0.1} mipmapBlur intensity={0.7} />
+          <Bloom
+            luminanceThreshold={0.1}
+            mipmapBlur
+            intensity={0.7}
+          />
         </EffectComposer>
       </Canvas>
     </div>
