@@ -27,9 +27,7 @@ export default function Navbar({ locale }: { locale: string }) {
     } else {
       document.body.style.overflow = "";
     }
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [isOpen]);
 
   const navLinks = [
@@ -38,35 +36,41 @@ export default function Navbar({ locale }: { locale: string }) {
     { label: "Docs", href: "#" },
   ];
 
+  const isLinkActive = (href: string) => {
+    if (href === "#" || !pathname) return false;
+    return pathname.startsWith(href);
+  };
+
   return (
     <>
       <header className="fixed top-0 left-0 w-full z-50 border-b border-white/10 bg-black/50 backdrop-blur-md">
         <div className="container mx-auto px-6 h-16 flex items-center justify-between">
-          <Link
-            href={`/${locale}`}
-            className="text-xl font-bold tracking-widest text-white relative z-50"
-          >
+          <Link href={`/${locale}`} className="text-xl font-bold tracking-widest text-white relative z-50">
             KROKBIT <span className="font-light text-gray-400">LABS</span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex gap-8 text-sm text-gray-400">
-            {navLinks.map((link, i) => (
-              <Link
-                key={i}
-                href={link.href}
-                className="hover:text-white transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+          <nav className="hidden md:flex gap-8 text-sm">
+            {navLinks.map((link, i) => {
+              const active = isLinkActive(link.href);
+              return (
+                <Link
+                  key={i}
+                  href={link.href}
+                  className={`transition-colors ${
+                    active
+                      ? "text-emerald-400/75 font-medium drop-shadow-[0_0_6px_rgba(52,211,153,0.2)]"
+                      : "text-gray-400 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="hidden md:flex items-center gap-4 text-sm font-medium">
-            <Link
-              href={getRedirectPath()}
-              className="text-gray-400 hover:text-white transition-colors uppercase"
-            >
+            <Link href={getRedirectPath()} className="text-gray-400 hover:text-white transition-colors uppercase">
               {locale} | {toggleLocale}
             </Link>
           </div>
@@ -106,52 +110,49 @@ export default function Navbar({ locale }: { locale: string }) {
             className="fixed inset-0 z-40 bg-black/40 flex flex-col justify-center px-8"
           >
             <div className="flex flex-col gap-6 mt-8">
-              {navLinks.map((link, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 20 }}
-                  transition={{
-                    duration: 0.5,
-                    delay: i * 0.08,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsOpen(false)}
-                    className="text-5xl font-light text-white tracking-wide block focus:text-[#00f0ff] transition-colors"
+              {navLinks.map((link, i) => {
+                const active = isLinkActive(link.href);
+                return (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 0.5, delay: i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.div>
-              ))}
-
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className={`text-5xl font-light tracking-wide block transition-colors ${
+                        active
+                          ? "text-emerald-400 drop-shadow-[0_0_12px_rgba(52,211,153,0.3)]"
+                          : "text-white"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
+              
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
-                transition={{
-                  duration: 0.5,
-                  delay: navLinks.length * 0.08,
-                  ease: [0.22, 1, 0.36, 1],
-                }}
+                transition={{ duration: 0.5, delay: navLinks.length * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 className="mt-12 pt-8 border-t border-white/10"
               >
-                <span className="text-xs text-gray-500 block mb-6 uppercase tracking-widest">
-                  Language
-                </span>
+                <span className="text-xs text-gray-500 block mb-6 uppercase tracking-widest">Language</span>
                 <div className="flex gap-8">
-                  <Link
-                    href={getRedirectPath()}
-                    className={`text-2xl font-medium transition-colors ${locale === "en" ? "text-white" : "text-gray-500 hover:text-gray-300"}`}
+                  <Link 
+                    href={getRedirectPath()} 
+                    className={`text-2xl font-medium transition-colors ${locale === 'en' ? 'text-emerald-400' : 'text-gray-500 hover:text-gray-300'}`}
                   >
                     EN
                   </Link>
-                  <Link
-                    href={getRedirectPath()}
-                    className={`text-2xl font-medium transition-colors ${locale === "cs" ? "text-white" : "text-gray-500 hover:text-gray-300"}`}
+                  <Link 
+                    href={getRedirectPath()} 
+                    className={`text-2xl font-medium transition-colors ${locale === 'cs' ? 'text-emerald-400' : 'text-gray-500 hover:text-gray-300'}`}
                   >
                     CS
                   </Link>
