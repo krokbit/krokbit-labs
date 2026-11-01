@@ -1,0 +1,19 @@
+{
+  "name": "wavy-sphere",
+  "type": "registry:ui",
+  "dependencies": [
+    "three",
+    "@react-three/fiber",
+    "@react-three/postprocessing"
+  ],
+  "devDependencies": [
+    "@types/three"
+  ],
+  "files": [
+    {
+      "path": "components/3d/WavySphere.tsx",
+      "type": "registry:ui",
+      "content": "\"use client\";\n\nimport { useRef, useMemo } from \"react\";\nimport { useFrame } from \"@react-three/fiber\";\nimport * as THREE from \"three\";\n\nexport default function WavySphere() {\n  const meshRef = useRef<THREE.Mesh>(null);\n  const materialRef = useRef<THREE.ShaderMaterial>(null);\n\n  const uniforms = useMemo(\n    () => ({\n      uTime: { value: 0 },\n      uColor1: { value: new THREE.Color(\"#00f0ff\") },\n      uColor2: { value: new THREE.Color(\"#0022cc\") },\n    }),\n    []\n  );\n\n  useFrame(({ clock }) => {\n    if (materialRef.current) {\n      materialRef.current.uniforms.uTime.value = clock.getElapsedTime();\n    }\n    if (meshRef.current) {\n      meshRef.current.rotation.y += 0.002;\n    }\n  });\n\n  return (\n    <mesh ref={meshRef}>\n      <icosahedronGeometry args={[1.5, 32]} />\n      <shaderMaterial\n        ref={materialRef}\n        uniforms={uniforms}\n        wireframe={true}\n        transparent={true}\n        vertexShader={`\n          uniform float uTime;\n          varying vec3 vPosition;\n          void main() {\n            vPosition = position;\n            vec3 p = position;\n            float noise = sin(p.x * 2.0 + uTime) * cos(p.y * 2.0 + uTime) * sin(p.z * 2.0 + uTime);\n            p += normal * noise * 0.4;\n            gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);\n          }\n        `}\n        fragmentShader={`\n          uniform float uTime;\n          uniform vec3 uColor1;\n          uniform vec3 uColor2;\n          varying vec3 vPosition;\n          void main() {\n            float mixValue = (vPosition.y + 1.5) / 3.0 + sin(uTime * 0.5) * 0.2;\n            vec3 color = mix(uColor1, uColor2, clamp(mixValue, 0.0, 1.0));\n            gl_FragColor = vec4(color * 1.5, 0.3);\n          }\n        `}\n      />\n    </mesh>\n  );\n}\n"
+    }
+  ]
+}

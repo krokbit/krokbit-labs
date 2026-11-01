@@ -12,13 +12,14 @@ export default async function ComponentsLayout({
   const dict = await getDictionary(locale);
 
   return (
-    <div className="min-h-dvh bg-black text-white flex flex-col">
+    <div className="h-dvh bg-black text-white flex flex-col overflow-hidden">
       <Navbar locale={locale} />
       
-      <div className="flex pt-16 flex-1 md:h-[calc(100dvh-4rem)] md:overflow-hidden w-full max-w-[100vw]">
+      <div className="flex pt-16 flex-1 h-full overflow-hidden w-full max-w-[100vw]">
         <LibrarySidebar locale={locale} dict={dict.library.sidebar} />
 
-        <main className="flex-1 min-w-0 w-full md:overflow-y-auto bg-black bg-grid-pattern pb-28 md:pb-16">
+        {/* Скролл работает внутри main независимо от браузера */}
+        <main className="flex-1 min-w-0 w-full h-[calc(100dvh-4rem)] overflow-y-auto overflow-x-hidden bg-black bg-grid-pattern pb-28 md:pb-16">
           {children}
         </main>
       </div>

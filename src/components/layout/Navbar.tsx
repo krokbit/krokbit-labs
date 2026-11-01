@@ -27,17 +27,29 @@ export default function Navbar({ locale }: { locale: string }) {
     } else {
       document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [isOpen]);
 
   const navLinks = [
     { label: "Components", href: `/${locale}/library` },
-    { label: "Templates", href: "#" },
-    { label: "Docs", href: "#" },
+    { label: "Templates", href: `/${locale}/templates` },
+    { label: "Docs", href: `/${locale}/library/installation` },
   ];
 
   const isLinkActive = (href: string) => {
-    if (href === "#" || !pathname) return false;
+    if (!pathname) return false;
+    const isDocsRoute =
+      pathname.startsWith(`/${locale}/library/installation`) ||
+      pathname.startsWith(`/${locale}/library/cli`);
+
+    if (href === `/${locale}/library/installation`) {
+      return isDocsRoute;
+    }
+    if (href === `/${locale}/library`) {
+      return pathname.startsWith(`/${locale}/library`) && !isDocsRoute;
+    }
     return pathname.startsWith(href);
   };
 
@@ -134,7 +146,7 @@ export default function Navbar({ locale }: { locale: string }) {
                   </motion.div>
                 );
               })}
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -144,15 +156,19 @@ export default function Navbar({ locale }: { locale: string }) {
               >
                 <span className="text-xs text-gray-500 block mb-6 uppercase tracking-widest">Language</span>
                 <div className="flex gap-8">
-                  <Link 
-                    href={getRedirectPath()} 
-                    className={`text-2xl font-medium transition-colors ${locale === 'en' ? 'text-emerald-400' : 'text-gray-500 hover:text-gray-300'}`}
+                  <Link
+                    href={getRedirectPath()}
+                    className={`text-2xl font-medium transition-colors ${
+                      locale === "en" ? "text-emerald-400" : "text-gray-500 hover:text-gray-300"
+                    }`}
                   >
                     EN
                   </Link>
-                  <Link 
-                    href={getRedirectPath()} 
-                    className={`text-2xl font-medium transition-colors ${locale === 'cs' ? 'text-emerald-400' : 'text-gray-500 hover:text-gray-300'}`}
+                  <Link
+                    href={getRedirectPath()}
+                    className={`text-2xl font-medium transition-colors ${
+                      locale === "cs" ? "text-emerald-400" : "text-gray-500 hover:text-gray-300"
+                    }`}
                   >
                     CS
                   </Link>

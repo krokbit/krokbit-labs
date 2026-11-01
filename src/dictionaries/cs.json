@@ -8,13 +8,13 @@
     "title": "Vysoce výkonné UI komponenty",
     "description": "Zkopírujte a vložte prémiové, vysoce optimalizované interaktivní 3D a WebGL prvky pro vylepšení vašich rozhraní.",
     "exploreButton": "Prozkoumat knihovnu",
-    "cliCommand": "npx @krokbit/labs init"
+    "cliCommand": "npx shadcn@latest add https://labs.krokbit.cz/r/wavy-sphere.json"
   },
   "library": {
     "sidebar": {
       "gettingStarted": "Začínáme",
       "installation": "Instalace",
-      "cli": "CLI",
+      "cli": "CLI Registr",
       "webgl": "WebGL a 3D",
       "wavySphere": "Wavy Sphere",
       "particlesGrid": "Particles Grid",
@@ -32,7 +32,7 @@
         },
         "particles": {
           "title": "Particles Grid",
-          "desc": "Real-time GLSL vlnové pole s 2 500 reaktivními body."
+          "desc": "Kruhové GLSL silové pole reagující na dotyk a myš."
         },
         "buttons": {
           "title": "Tlačítka",
@@ -40,7 +40,7 @@
         },
         "cards": {
           "title": "Karty",
-          "desc": "Vícevrstvé mléčné telemetrické karty s lomem světla."
+          "desc": "3D holo-tilt telemetrická karta s živým přetaktováním GPU."
         }
       }
     },
@@ -53,11 +53,11 @@
     "wavySpherePage": {
       "title": "Wavy Sphere",
       "description": "Vlastní GLSL drátěný ikosaedr s 3D projekcí myši a HDR Bloom efektem.",
-      "installTitle": "Instalace"
+      "installTitle": "Instalace jedním příkazem (shadcn Registr)"
     },
     "particlesPage": {
-      "title": "Particles Grid",
-      "description": "GPU akcelerovaná matice bodů poháněná harmonickými vlnami ve vlastním vertex shaderu.",
+      "title": "Radial Force-Field Matrix",
+      "description": "Kruhový GPU hologram částic s gravitační reakcí na kurzor či prst a HDR Bloom efektem.",
       "installTitle": "Instalace"
     },
     "buttonsPage": {
@@ -66,26 +66,50 @@
       "usageTitle": "Závislosti"
     },
     "cardsPage": {
-      "title": "Refrakční Bento Karta",
-      "description": "Vrstvený glassmorphism kontejner s vnitřními odlesky, SVG telemetrií a podsvícením.",
+      "title": "3D Holo Telemetrická Karta",
+      "description": "Interaktivní skleněná karta s 3D náklonem, sledováním odlesku a živou simulací zátěže GPU.",
       "usageTitle": "Závislosti"
     },
     "installationPage": {
       "title": "Instalace a architektura",
       "description": "Jak integrovat WebGL a UI prvky Krokbit Labs do vašeho Next.js App Router projektu.",
-      "step1Title": "1. Základní styly (Tailwind CSS)",
-      "step1Desc": "Všechny UI prvky využívají třídy Tailwind CSS a hardwarově akcelerované backdrop filtry.",
-      "step2Title": "2. Závislosti pro WebGL a 3D",
-      "step2Desc": "Pro 3D komponenty (Wavy Sphere, Particles Grid) nainstalujte Three.js a React Three Fiber:",
-      "step3Title": "3. Přímé kopírování kódu",
-      "step3Desc": "Otevřete libovolnou komponentu, přepněte na kartu Kód, zkopírujte zdroj do src/components/ a naimportujte jej."
+      "step1Title": "1. Přímá instalace přes CLI (Doporučeno)",
+      "step1Desc": "Krokbit Labs provozuje JSON registr kompatibilní se shadcn. Spusťte tento příkaz ve vašem Next.js projektu pro automatické stažení komponenty i 3D závislostí:",
+      "step2Title": "2. Manuální instalace závislostí",
+      "step2Desc": "Pokud preferujete ruční kopírování kódu přes záložku Kód, nainstalujte nejprve WebGL balíčky:",
+      "step3Title": "3. Čistý zdrojový kód bez uzamčení",
+      "step3Desc": "Všechny shadery a UI prvky se ukládají přímo do vaší složky src/components/. Máte 100% kontrolu nad kódem."
     },
     "cliPage": {
-      "title": "Krokbit CLI",
-      "description": "Automatizovaný terminálový nástroj pro vkládání komponent přímo do stromu projektu.",
-      "statusBadge": "v0.1.0 — Ve vývoji",
-      "roadmapTitle": "Jak to funguje",
-      "roadmapDesc": "Nástroj @krokbit/labs CLI načte cesty z vašeho tsconfig.json a stáhne čisté TypeScript/GLSL soubory přímo do vašeho repozitáře. Než dokončíme publikaci v npm registru, použijte tlačítko Kopírovat kód u každé komponenty."
+      "title": "CLI Registr Protokol",
+      "description": "Instalujte 3D prvky Krokbit přímo z terminálu pomocí standardních endpointů shadcn registru.",
+      "statusBadge": "Registr v1.0 — Aktivní",
+      "roadmapTitle": "Jak fungují endpointy registru",
+      "roadmapDesc": "Každá komponenta má statický JSON manifest na adrese /r/[component].json. Spuštění npx shadcn@latest add s naší URL vloží TypeScript + GLSL kód přímo do vašeho projektu a automaticky nainstaluje npm závislosti."
+    }
+  },
+  "templatesPage": {
+    "badge": "Produkční šablony a B2B",
+    "title": "Next.js & WebGL Šablony",
+    "description": "Kompletní architektonické šablony postavené na Next.js App Router, React Three Fiber a Tailwind CSS.",
+    "previewBtn": "Živá ukázka",
+    "customBtn": "Poptat vlastní vývoj",
+    "items": {
+      "nebula": {
+        "tag": "Součást Labs",
+        "title": "Krokbit Labs R&D Core",
+        "desc": "Vícejazyčná (EN/CS) WebGL architektura s vlastními GLSL shadery a interaktivním prohlížečem komponent."
+      },
+      "synthetix": {
+        "tag": "B2B SaaS Kit",
+        "title": "Neural Cloud Landing",
+        "desc": "Vysoce konverzní tmavá SaaS šablona s 3D silovým polem, telemetrickým bento gridem a ceníkem."
+      },
+      "enterprise": {
+        "tag": "Zakázkový vývoj",
+        "title": "WebGL a Next.js platforma na míru",
+        "desc": "Potřebujete 3D konfigurátor produktů, rychlý e-shop nebo B2B portál? Dodáme řešení na klíč od studia Krokbit."
+      }
     }
   }
 }
