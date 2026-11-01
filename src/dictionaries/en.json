@@ -30,13 +30,17 @@
           "title": "Wavy Sphere",
           "desc": "Interactive WebGL sphere with Bloom post-processing."
         },
+        "particles": {
+          "title": "Particles Grid",
+          "desc": "Real-time GLSL wave field with 2,500 reactive vertices."
+        },
         "buttons": {
           "title": "Buttons",
-          "desc": "Highly optimized interactive buttons."
+          "desc": "Refractive glassmorphism & conic-border hardware buttons."
         },
         "cards": {
           "title": "Cards",
-          "desc": "Glassmorphism and 3D card layouts."
+          "desc": "Multi-layered frosted telemetry cards with ambient refraction."
         }
       }
     },
@@ -51,10 +55,37 @@
       "description": "Custom GLSL wireframe icosahedron with 3D mouse unprojection and HDR Bloom.",
       "installTitle": "Installation"
     },
+    "particlesPage": {
+      "title": "Particles Grid",
+      "description": "GPU-accelerated point cloud matrix driven by harmonic sine waves in a custom vertex shader.",
+      "installTitle": "Installation"
+    },
     "buttonsPage": {
-      "title": "Interactive Buttons",
-      "description": "High-conversion B2B buttons with animated borders, glow states, and tactile micro-interactions.",
+      "title": "Hardware & Glass Buttons",
+      "description": "Autonomous conic-border, refractive frosted glass, and tactile command triggers designed for mobile & desktop.",
       "usageTitle": "Dependencies"
+    },
+    "cardsPage": {
+      "title": "Refractive Bento Card",
+      "description": "Layered glassmorphism container with internal specular highlights, SVG telemetry matrix, and ambient light bleed.",
+      "usageTitle": "Dependencies"
+    },
+    "installationPage": {
+      "title": "Installation & Architecture",
+      "description": "How to integrate Krokbit Labs WebGL and UI primitives into your Next.js App Router project.",
+      "step1Title": "1. Core Styling (Tailwind CSS)",
+      "step1Desc": "All UI primitives rely on Tailwind CSS utility classes and hardware-accelerated backdrop filters.",
+      "step2Title": "2. WebGL & 3D Engine Dependencies",
+      "step2Desc": "For 3D components (Wavy Sphere, Particles Grid), install Three.js and React Three Fiber:",
+      "step3Title": "3. Direct Copy-Paste Workflow",
+      "step3Desc": "Open any component, switch to the Code tab, copy the source into src/components/, and import it. Zero hidden black-box wrappers."
+    },
+    "cliPage": {
+      "title": "Krokbit CLI",
+      "description": "Automated terminal scaffolder for injecting components directly into your source tree.",
+      "statusBadge": "v0.1.0 — In Active Development",
+      "roadmapTitle": "How It Works",
+      "roadmapDesc": "The @krokbit/labs CLI reads your tsconfig.json paths and downloads raw TypeScript/GLSL source files directly into your repository. While registry publishing is being finalized, use the manual Copy Code button on each component page."
     }
   }
 }

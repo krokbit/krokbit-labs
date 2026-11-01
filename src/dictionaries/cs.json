@@ -30,13 +30,17 @@
           "title": "Wavy Sphere",
           "desc": "Interaktivní WebGL sféra s post-processingem Bloom."
         },
+        "particles": {
+          "title": "Particles Grid",
+          "desc": "Real-time GLSL vlnové pole s 2 500 reaktivními body."
+        },
         "buttons": {
           "title": "Tlačítka",
-          "desc": "Vysoce optimalizovaná interaktivní tlačítka."
+          "desc": "Glassmorphismus a hardwarová tlačítka s rotujícím okrajem."
         },
         "cards": {
           "title": "Karty",
-          "desc": "Glassmorphismus a 3D rozložení karet."
+          "desc": "Vícevrstvé mléčné telemetrické karty s lomem světla."
         }
       }
     },
@@ -51,10 +55,37 @@
       "description": "Vlastní GLSL drátěný ikosaedr s 3D projekcí myši a HDR Bloom efektem.",
       "installTitle": "Instalace"
     },
+    "particlesPage": {
+      "title": "Particles Grid",
+      "description": "GPU akcelerovaná matice bodů poháněná harmonickými vlnami ve vlastním vertex shaderu.",
+      "installTitle": "Instalace"
+    },
     "buttonsPage": {
-      "title": "Interaktivní tlačítka",
-      "description": "Vysoce konverzní B2B tlačítka s animovanými okraji, světelnými efekty a mikro-interakcemi.",
+      "title": "Hardwarová a skleněná tlačítka",
+      "description": "Autonomní rotující okraje, refrakční mléčné sklo a taktilní spouštěče navržené pro mobily i desktop.",
       "usageTitle": "Závislosti"
+    },
+    "cardsPage": {
+      "title": "Refrakční Bento Karta",
+      "description": "Vrstvený glassmorphism kontejner s vnitřními odlesky, SVG telemetrií a podsvícením.",
+      "usageTitle": "Závislosti"
+    },
+    "installationPage": {
+      "title": "Instalace a architektura",
+      "description": "Jak integrovat WebGL a UI prvky Krokbit Labs do vašeho Next.js App Router projektu.",
+      "step1Title": "1. Základní styly (Tailwind CSS)",
+      "step1Desc": "Všechny UI prvky využívají třídy Tailwind CSS a hardwarově akcelerované backdrop filtry.",
+      "step2Title": "2. Závislosti pro WebGL a 3D",
+      "step2Desc": "Pro 3D komponenty (Wavy Sphere, Particles Grid) nainstalujte Three.js a React Three Fiber:",
+      "step3Title": "3. Přímé kopírování kódu",
+      "step3Desc": "Otevřete libovolnou komponentu, přepněte na kartu Kód, zkopírujte zdroj do src/components/ a naimportujte jej."
+    },
+    "cliPage": {
+      "title": "Krokbit CLI",
+      "description": "Automatizovaný terminálový nástroj pro vkládání komponent přímo do stromu projektu.",
+      "statusBadge": "v0.1.0 — Ve vývoji",
+      "roadmapTitle": "Jak to funguje",
+      "roadmapDesc": "Nástroj @krokbit/labs CLI načte cesty z vašeho tsconfig.json a stáhne čisté TypeScript/GLSL soubory přímo do vašeho repozitáře. Než dokončíme publikaci v npm registru, použijte tlačítko Kopírovat kód u každé komponenty."
     }
   }
 }

@@ -134,7 +134,7 @@ export default async function WavySpherePage({
         <h2 className="text-xl font-semibold text-white">
           {dict.library.wavySpherePage.installTitle}
         </h2>
-        <div className="p-4 bg-[#050505] border border-white/10 rounded-xl font-mono text-xs text-gray-300 overflow-x-auto">
+        <div className="p-4 bg-[#050505] border border-white/10 rounded-xl font-mono text-xs text-gray-300 leading-relaxed break-words">
           npm install three @types/three @react-three/fiber @react-three/postprocessing
         </div>
       </div>
