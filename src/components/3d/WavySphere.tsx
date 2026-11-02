@@ -6,9 +6,17 @@ import * as THREE from "three";
 
 interface WavySphereProps {
   centered?: boolean;
+  color1?: string;
+  color2?: string;
+  speed?: number;
 }
 
-export default function WavySphere({ centered = false }: WavySphereProps) {
+export default function WavySphere({
+  centered = false,
+  color1 = "#00f0ff",
+  color2 = "#0022cc",
+  speed = 1.0,
+}: WavySphereProps) {
   const meshRef = useRef<THREE.Mesh>(null);
   const materialRef = useRef<THREE.ShaderMaterial>(null);
 
@@ -24,6 +32,13 @@ export default function WavySphere({ centered = false }: WavySphereProps) {
     }),
     [],
   );
+
+  useEffect(() => {
+    if (materialRef.current) {
+      materialRef.current.uniforms.uColor1.value.set(color1);
+      materialRef.current.uniforms.uColor2.value.set(color2);
+    }
+  }, [color1, color2]);
 
   useEffect(() => {
     const handlePointerMove = (e: PointerEvent) => {
@@ -62,7 +77,8 @@ export default function WavySphere({ centered = false }: WavySphereProps) {
       const localMousePos = worldMousePos.sub(meshRef.current.position);
 
       if (materialRef.current) {
-        materialRef.current.uniforms.uTime.value = clock.getElapsedTime();
+        materialRef.current.uniforms.uTime.value =
+          clock.getElapsedTime() * speed;
         materialRef.current.uniforms.uMouse.value.x +=
           (localMousePos.x - materialRef.current.uniforms.uMouse.value.x) * 0.1;
         materialRef.current.uniforms.uMouse.value.y +=
@@ -76,7 +92,7 @@ export default function WavySphere({ centered = false }: WavySphereProps) {
         (targetRotation.current.x - meshRef.current.rotation.x) * 0.05;
       meshRef.current.rotation.y +=
         (targetRotation.current.y - meshRef.current.rotation.y) * 0.05 + 0.001;
-      meshRef.current.rotation.z = clock.getElapsedTime() * 0.02;
+      meshRef.current.rotation.z = clock.getElapsedTime() * 0.02 * speed;
     }
   });
 
@@ -93,23 +109,18 @@ export default function WavySphere({ centered = false }: WavySphereProps) {
         vertexShader={`
           uniform float uTime;
           uniform vec2 uMouse; 
-          
           varying vec2 vUv;
           varying vec3 vPosition;
 
           void main() {
             vUv = uv;
             vPosition = position;
-            
             vec3 p = position;
-            
             float noise = sin(p.x * 2.0 + uTime) * cos(p.y * 2.0 + uTime) * sin(p.z * 2.0 + uTime);
             p += normal * noise * 0.4;
-            
             float dist = distance(p.xy, uMouse);
             float pull = smoothstep(1.5, 0.0, dist);
             p += normal * pull * 0.8;
-            
             gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
           }
         `}
@@ -123,7 +134,6 @@ export default function WavySphere({ centered = false }: WavySphereProps) {
           void main() {
             float mixValue = (vPosition.y + 1.5) / 3.0 + sin(uTime * 0.5) * 0.2;
             vec3 color = mix(uColor1, uColor2, clamp(mixValue, 0.0, 1.0));
-            
             float intensity = 1.5; 
             gl_FragColor = vec4(color * intensity, 0.3);
           }
