@@ -42,7 +42,8 @@ export default async function InstallationPage({
             {dict.library.installationPage.step2Desc}
           </p>
           <div className="p-4 bg-[#050505] border border-white/10 rounded-lg font-mono text-xs text-gray-300 break-words leading-relaxed">
-            npm install three @types/three @react-three/fiber @react-three/postprocessing framer-motion
+            npm install three @types/three @react-three/fiber
+            @react-three/postprocessing framer-motion
           </div>
         </section>
 
