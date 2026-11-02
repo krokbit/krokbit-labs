@@ -13,11 +13,7 @@ export default function SpherePreviewCanvas() {
       >
         <WavySphere centered={true} />
         <EffectComposer>
-          <Bloom
-            luminanceThreshold={0.1}
-            mipmapBlur
-            intensity={0.7}
-          />
+          <Bloom luminanceThreshold={0.1} mipmapBlur intensity={0.7} />
         </EffectComposer>
       </Canvas>
     </div>

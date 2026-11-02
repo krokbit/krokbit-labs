@@ -30,14 +30,14 @@ export default async function Home({
             </div>
 
             <h1
-              className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-white"
+              className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-tight mb-6 text-white"
               style={{ textShadow: "0 4px 30px rgba(0,0,0,1)" }}
             >
               {dict.home.title}
             </h1>
 
             <p
-              className="text-lg text-gray-200 mb-8 max-w-lg leading-relaxed"
+              className="text-base sm:text-lg text-gray-200 mb-8 max-w-lg leading-relaxed"
               style={{ textShadow: "0 2px 10px rgba(0,0,0,0.8)" }}
             >
               {dict.home.description}
@@ -46,12 +46,12 @@ export default async function Home({
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href={`/${locale}/library`}
-                className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.3)] text-center"
+                className="shrink-0 whitespace-nowrap px-8 py-4 rounded-xl bg-white/[0.14] hover:bg-white/[0.22] active:scale-[0.98] backdrop-blur-md backdrop-brightness-125 border border-white/25 text-white font-semibold shadow-[inset_0_1px_1px_rgba(255,255,255,0.45),0_10px_30px_-5px_rgba(0,0,0,0.6)] transition-all text-center"
               >
                 {dict.home.exploreButton}
               </Link>
-              <div className="flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-lg text-sm text-gray-300 font-mono w-full sm:w-auto shadow-lg">
-                <span>{dict.home.cliCommand}</span>
+              <div className="flex items-center justify-between px-4 py-3 bg-black/80 backdrop-blur-md border border-white/10 rounded-xl text-sm text-gray-300 font-mono w-full sm:w-auto min-w-0 shadow-lg">
+                <span className="truncate">{dict.home.cliCommand}</span>
               </div>
             </div>
           </div>
