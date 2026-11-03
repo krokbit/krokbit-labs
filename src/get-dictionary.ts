@@ -5,5 +5,9 @@ const dictionaries = {
   cs: () => import("./dictionaries/cs.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: "en" | "cs") =>
-  dictionaries[locale]();
+export type Locale = keyof typeof dictionaries;
+
+export const getDictionary = async (locale: string) => {
+  const loader = dictionaries[locale as Locale] ?? dictionaries.en;
+  return loader();
+};

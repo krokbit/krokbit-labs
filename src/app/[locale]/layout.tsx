@@ -19,6 +19,22 @@ export const metadata: Metadata = {
     "R&D",
     "Frontend",
   ],
+  icons: {
+    icon: [
+      { url: "/icons/favicon.ico" },
+      { url: "/icons/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icons/favicon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: ["/icons/favicon.ico"],
+    apple: [
+      {
+        url: "/icons/apple-touch-icon.png",
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
+  },
+  manifest: "/icons/site.webmanifest",
   openGraph: {
     title: "Krokbit Labs | UI & WebGL Library",
     description: "Premium WebGL & UI Components for Next.js.",
