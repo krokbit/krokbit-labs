@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import "../globals.css";
 
+export function generateStaticParams() {
+  return [{ locale: "en" }, { locale: "cs" }];
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://labs.krokbit.cz"),
   title: {

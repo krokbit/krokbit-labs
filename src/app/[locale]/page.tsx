@@ -1,8 +1,12 @@
+import dynamic from "next/dynamic";
 import { getDictionary } from "@/get-dictionary";
 import Navbar from "@/components/layout/Navbar";
-import HeroCanvas from "@/components/3d/HeroCanvas";
 import CliCommandBar from "@/components/ui/CliCommandBar";
 import Link from "next/link";
+
+const HeroCanvas = dynamic(() => import("@/components/3d/HeroCanvas"), {
+  ssr: false,
+});
 
 export default async function Home({
   params: { locale },

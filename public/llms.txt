@@ -1,0 +1,32 @@
+# Krokbit Labs
+
+> Krokbit Labs (https://labs.krokbit.cz) is an R&D showcase and open-source library of high-performance 3D/WebGL (Three.js, React Three Fiber, GLSL shaders) and interactive UI components for React and Next.js, engineered by Krokbit Studio (https://krokbit.cz).
+
+## Documentation & CLI
+
+- [Library Overview (EN)](https://labs.krokbit.cz/en/library): Main catalog of 3D WebGL shaders, interactive particles, hardware buttons, and telemetry cards.
+- [Přehled knihovny (CS)](https://labs.krokbit.cz/cs/library): Hlavní katalog 3D WebGL shaderů a UI komponent pro React a Next.js.
+- [Installation Guide](https://labs.krokbit.cz/en/library/installation): Step-by-step instructions for integrating Krokbit Labs components via shadcn CLI or manual copy-paste.
+- [CLI & Registry Documentation](https://labs.krokbit.cz/en/library/cli): How to use the machine-readable JSON component registry with `npx shadcn@latest add`.
+- [Templates Showcase](https://labs.krokbit.cz/en/templates): Production-ready Next.js & WebGL templates for B2B and SaaS projects.
+
+## 3D & WebGL Components
+
+- [Wavy Sphere 3D](https://labs.krokbit.cz/en/library/wavy-sphere): Custom GLSL vertex/fragment displacement sphere with HDR Bloom post-processing and real-time preset controls.
+- [Interactive 3D Particles](https://labs.krokbit.cz/en/library/particles): Circular 3D particle matrix with physics-based pointer/touch repulsion and smooth spring restoration.
+
+## High-Conversion UI Components
+
+- [Tactile & Glass Buttons](https://labs.krokbit.cz/en/library/buttons): Conic Beam, iOS Multi-Layer Glassmorphism, and Tactile Hardware button components.
+- [Interactive Telemetry Card](https://labs.krokbit.cz/en/library/cards): 3D tilt-reactive B2B telemetry card with dynamic glare and GPU Boost mode.
+
+## Machine-Readable Registry (shadcn CLI)
+
+- [Wavy Sphere Registry JSON](https://labs.krokbit.cz/r/wavy-sphere.json): Direct shadcn-compatible component manifest for `wavy-sphere`.
+- [Particles Registry JSON](https://labs.krokbit.cz/r/particles.json): Direct shadcn-compatible component manifest for `particles`.
+- [Buttons Registry JSON](https://labs.krokbit.cz/r/buttons.json): Direct shadcn-compatible component manifest for `buttons`.
+- [Cards Registry JSON](https://labs.krokbit.cz/r/cards.json): Direct shadcn-compatible component manifest for `cards`.
+
+## Custom Engineering & B2B Development
+
+- [Krokbit Studio](https://krokbit.cz): Full-cycle custom web application, 3D/WebGL, and e-commerce development by Krokbit Studio.
