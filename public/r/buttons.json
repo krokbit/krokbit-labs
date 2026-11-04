@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "buttons",
+  "type": "registry:ui",
+  "title": "Krokbit Glassmorphism & Conic Buttons",
+  "description": "Autonomous conic-border beam, multi-layer iOS glassmorphism, and tactile hardware command buttons for React & Tailwind CSS.",
+  "dependencies": [],
+  "devDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/KrokbitButtons.tsx",
+      "target": "components/ui/KrokbitButtons.tsx",
+      "type": "registry:ui",
+      "content": "export default function KrokbitButtons() {\n  return (\n    <div className=\"relative flex flex-col sm:flex-row flex-wrap items-center justify-center gap-6 p-8\">\n      {/* 1. Autonomous Conic-Border Beam Button */}\n      <button\n        type=\"button\"\n        className=\"relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none active:scale-95 transition-transform duration-200 shadow-[0_0_25px_rgba(52,211,153,0.15)]\"\n      >\n        <span className=\"absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#10b981_50%,#00f0ff_75%,#000000_100%)]\" />\n        <span className=\"relative z-10 inline-flex h-full w-full items-center justify-center gap-3 rounded-[11px] bg-[#050505] px-6 py-2 text-xs font-mono uppercase tracking-wider text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]\">\n          <span className=\"relative flex h-2 w-2\">\n            <span className=\"animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75\" />\n            <span className=\"relative inline-flex rounded-full h-2 w-2 bg-emerald-400\" />\n          </span>\n          Deploy Node\n        </span>\n      </button>\n\n      {/* 2. True Multi-Layer Glassmorphism Button */}\n      <button\n        type=\"button\"\n        className=\"relative px-7 h-12 rounded-xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white text-sm font-medium tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-10px_20px_rgba(0,240,255,0.12)] hover:bg-white/[0.14] hover:border-white/35 active:scale-95 transition-all duration-200 flex items-center gap-2.5 focus:outline-none\"\n      >\n        <span className=\"text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]\">✦</span>\n        <span>Initialize WebGL</span>\n      </button>\n\n      {/* 3. Tactile Hardware Command Trigger */}\n      <button\n        type=\"button\"\n        className=\"group h-12 px-5 rounded-xl bg-gradient-to-b from-zinc-800/90 to-zinc-950 border border-white/15 text-gray-200 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:text-white hover:border-emerald-400/40 active:scale-95 transition-all duration-150 flex items-center gap-3 focus:outline-none\"\n      >\n        <span>Execute CLI</span>\n        <kbd className=\"px-2 py-0.5 text-[11px] font-mono text-emerald-400 bg-black/80 border border-emerald-400/30 rounded-md\">\n          ⌘K\n        </kbd>\n      </button>\n    </div>\n  );\n}\n"
+    }
+  ]
+}
