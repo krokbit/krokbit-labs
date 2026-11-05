@@ -18,9 +18,11 @@
       "webgl": "WebGL & 3D",
       "wavySphere": "Wavy Sphere",
       "particlesGrid": "Particles Grid",
+      "quantumVortex": "Quantum Vortex",
       "uiElements": "UI Elements",
       "buttons": "Buttons",
-      "cards": "Cards"
+      "cards": "Cards",
+      "bentoGrid": "Bento Grid"
     },
     "page": {
       "title": "Components Library",
@@ -34,6 +36,10 @@
           "title": "Particles Grid",
           "desc": "Radial GLSL force-field matrix reactive to touch & mouse."
         },
+        "vortex": {
+          "title": "Quantum Vortex",
+          "desc": "Twisted 3D GLSL torus shader with pointer tilt and HDR Bloom."
+        },
         "buttons": {
           "title": "Buttons",
           "desc": "Refractive glassmorphism & conic-border hardware buttons."
@@ -41,6 +47,10 @@
         "cards": {
           "title": "Cards",
           "desc": "3D holo-tilt telemetry card with live GPU overclock mode."
+        },
+        "bento": {
+          "title": "Spotlight Bento",
+          "desc": "Interactive B2B bento grid with radial cursor spotlight tracking."
         }
       }
     },
@@ -60,6 +70,11 @@
       "description": "Circular GPU point-cloud hologram with real-time pointer gravity craters and HDR Bloom.",
       "installTitle": "Installation"
     },
+    "vortexPage": {
+      "title": "Quantum Vortex Torus",
+      "description": "Twisted GLSL wireframe torus with spiral phase displacement, pointer tilt reactivity, and HDR Bloom.",
+      "installTitle": "Manual Engine Dependencies"
+    },
     "buttonsPage": {
       "title": "Hardware & Glass Buttons",
       "description": "Autonomous conic-border, refractive frosted glass, and tactile command triggers designed for mobile & desktop.",
@@ -68,6 +83,11 @@
     "cardsPage": {
       "title": "3D Holo Telemetry Card",
       "description": "Interactive perspective-tilt glass container with cursor glare tracking and live GPU stress-test simulation.",
+      "usageTitle": "Dependencies"
+    },
+    "bentoPage": {
+      "title": "Spotlight Bento Grid",
+      "description": "B2B telemetry bento layout with dynamic radial cursor spotlight, edge cluster switching, and live throughput bars.",
       "usageTitle": "Dependencies"
     },
     "installationPage": {

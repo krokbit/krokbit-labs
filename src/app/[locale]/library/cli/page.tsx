@@ -11,12 +11,20 @@ const REGISTRY_ITEMS = [
     command: "npx shadcn@latest add https://labs.krokbit.cz/r/particles.json",
   },
   {
+    name: "Quantum Vortex Torus (3D GLSL)",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/vortex.json",
+  },
+  {
     name: "Glassmorphism & Conic Buttons",
     command: "npx shadcn@latest add https://labs.krokbit.cz/r/buttons.json",
   },
   {
     name: "3D Holo Telemetry Card",
     command: "npx shadcn@latest add https://labs.krokbit.cz/r/cards.json",
+  },
+  {
+    name: "Spotlight Bento Grid",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/bento.json",
   },
 ];
 

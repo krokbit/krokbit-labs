@@ -18,9 +18,11 @@
       "webgl": "WebGL a 3D",
       "wavySphere": "Wavy Sphere",
       "particlesGrid": "Particles Grid",
+      "quantumVortex": "Quantum Vortex",
       "uiElements": "UI Prvky",
       "buttons": "Tlačítka",
-      "cards": "Karty"
+      "cards": "Karty",
+      "bentoGrid": "Bento Grid"
     },
     "page": {
       "title": "Knihovna komponent",
@@ -34,6 +36,10 @@
           "title": "Particles Grid",
           "desc": "Kruhové GLSL silové pole reagující na dotyk a myš."
         },
+        "vortex": {
+          "title": "Quantum Vortex",
+          "desc": "Rotující 3D GLSL toroidní shader s reakcí na kurzor a HDR Bloom."
+        },
         "buttons": {
           "title": "Tlačítka",
           "desc": "Glassmorphismus a hardwarová tlačítka s rotujícím okrajem."
@@ -41,6 +47,10 @@
         "cards": {
           "title": "Karty",
           "desc": "3D holo-tilt telemetrická karta s živým přetaktováním GPU."
+        },
+        "bento": {
+          "title": "Spotlight Bento",
+          "desc": "Interaktivní B2B bento mřížka s radiálním sledováním kurzoru."
         }
       }
     },
@@ -60,6 +70,11 @@
       "description": "Kruhový GPU hologram částic s gravitační reakcí na kurzor či prst a HDR Bloom efektem.",
       "installTitle": "Instalace"
     },
+    "vortexPage": {
+      "title": "Quantum Vortex Torus",
+      "description": "Drátěný GLSL torus se spirálovou deformací, náklonem podle kurzoru a HDR Bloom efektem.",
+      "installTitle": "Manuální instalace závislostí"
+    },
     "buttonsPage": {
       "title": "Hardwarová a skleněná tlačítka",
       "description": "Autonomní rotující okraje, refrakční mléčné sklo a taktilní spouštěče navržené pro mobily i desktop.",
@@ -68,6 +83,11 @@
     "cardsPage": {
       "title": "3D Holo Telemetrická Karta",
       "description": "Interaktivní skleněná karta s 3D náklonem, sledováním odlesku a živou simulací zátěže GPU.",
+      "usageTitle": "Závislosti"
+    },
+    "bentoPage": {
+      "title": "Spotlight Bento Grid",
+      "description": "B2B telemetrická bento mřížka s dynamickým sledováním kurzoru, přepínáním uzlů a živou propustností.",
       "usageTitle": "Závislosti"
     },
     "installationPage": {

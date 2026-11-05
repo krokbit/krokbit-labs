@@ -10,9 +10,11 @@ interface SidebarDict {
   webgl: string;
   wavySphere: string;
   particlesGrid: string;
+  quantumVortex: string;
   uiElements: string;
   buttons: string;
   cards: string;
+  bentoGrid: string;
 }
 
 interface LibrarySidebarProps {
@@ -36,6 +38,7 @@ export default function LibrarySidebar({ locale, dict }: LibrarySidebarProps) {
       links: [
         { label: dict.wavySphere, href: `/${locale}/library/wavy-sphere` },
         { label: dict.particlesGrid, href: `/${locale}/library/particles` },
+        { label: dict.quantumVortex, href: `/${locale}/library/vortex` },
       ],
     },
     {
@@ -43,6 +46,7 @@ export default function LibrarySidebar({ locale, dict }: LibrarySidebarProps) {
       links: [
         { label: dict.buttons, href: `/${locale}/library/buttons` },
         { label: dict.cards, href: `/${locale}/library/cards` },
+        { label: dict.bentoGrid, href: `/${locale}/library/bento` },
       ],
     },
   ];

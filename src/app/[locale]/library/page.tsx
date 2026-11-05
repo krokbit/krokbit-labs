@@ -9,25 +9,35 @@ export default async function ComponentsPage({
   const dict = await getDictionary(locale);
 
   const categories = [
-    { 
-      title: dict.library.page.components.wavySphere.title, 
-      desc: dict.library.page.components.wavySphere.desc, 
-      href: `/${locale}/library/wavy-sphere` 
+    {
+      title: dict.library.page.components.wavySphere.title,
+      desc: dict.library.page.components.wavySphere.desc,
+      href: `/${locale}/library/wavy-sphere`,
     },
-    { 
-      title: dict.library.page.components.particles.title, 
-      desc: dict.library.page.components.particles.desc, 
-      href: `/${locale}/library/particles` 
+    {
+      title: dict.library.page.components.particles.title,
+      desc: dict.library.page.components.particles.desc,
+      href: `/${locale}/library/particles`,
     },
-    { 
-      title: dict.library.page.components.buttons.title, 
-      desc: dict.library.page.components.buttons.desc, 
-      href: `/${locale}/library/buttons` 
+    {
+      title: dict.library.page.components.vortex.title,
+      desc: dict.library.page.components.vortex.desc,
+      href: `/${locale}/library/vortex`,
     },
-    { 
-      title: dict.library.page.components.cards.title, 
-      desc: dict.library.page.components.cards.desc, 
-      href: `/${locale}/library/cards` 
+    {
+      title: dict.library.page.components.buttons.title,
+      desc: dict.library.page.components.buttons.desc,
+      href: `/${locale}/library/buttons`,
+    },
+    {
+      title: dict.library.page.components.cards.title,
+      desc: dict.library.page.components.cards.desc,
+      href: `/${locale}/library/cards`,
+    },
+    {
+      title: dict.library.page.components.bento.title,
+      desc: dict.library.page.components.bento.desc,
+      href: `/${locale}/library/bento`,
     },
   ];
 

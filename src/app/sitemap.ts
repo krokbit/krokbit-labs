@@ -8,12 +8,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "", priority: 1.0, changeFrequency: "weekly" as const },
     { path: "/library", priority: 0.9, changeFrequency: "weekly" as const },
     { path: "/templates", priority: 0.9, changeFrequency: "weekly" as const },
-    { path: "/library/wavy-sphere", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/library/particles", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/library/buttons", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/library/cards", priority: 0.8, changeFrequency: "monthly" as const },
-    { path: "/library/installation", priority: 0.7, changeFrequency: "monthly" as const },
-    { path: "/library/cli", priority: 0.7, changeFrequency: "monthly" as const },
+    {
+      path: "/library/wavy-sphere",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/particles",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/vortex",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/buttons",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/cards",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/bento",
+      priority: 0.8,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/installation",
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    },
+    {
+      path: "/library/cli",
+      priority: 0.7,
+      changeFrequency: "monthly" as const,
+    },
   ];
 
   const lastModified = new Date();
