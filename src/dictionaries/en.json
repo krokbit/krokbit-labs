@@ -86,6 +86,12 @@
       "statusBadge": "Registry v1.0 — Live",
       "roadmapTitle": "How Registry Endpoints Work",
       "roadmapDesc": "Every component exposes a static JSON manifest at /r/[component].json. Running npx shadcn@latest add with our URL injects the TypeScript + GLSL source directly into your project and resolves all npm dependencies automatically."
+    },
+    "ctaBanner": {
+      "badge": "Engineered by Krokbit Studio",
+      "title": "Need a custom 3D/WebGL experience or high-performance B2B web app?",
+      "description": "We architect and ship production Next.js applications, custom GLSL shaders, and high-conversion B2B interfaces.",
+      "button": "Book a Project →"
     }
   },
   "templatesPage": {

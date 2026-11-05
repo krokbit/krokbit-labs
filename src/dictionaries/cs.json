@@ -86,6 +86,12 @@
       "statusBadge": "Registr v1.0 — Aktivní",
       "roadmapTitle": "Jak fungují endpointy registru",
       "roadmapDesc": "Každá komponenta má statický JSON manifest na adrese /r/[component].json. Spuštění npx shadcn@latest add s naší URL vloží TypeScript + GLSL kód přímo do vašeho projektu a automaticky nainstaluje npm závislosti."
+    },
+    "ctaBanner": {
+      "badge": "Engineered by Krokbit Studio",
+      "title": "Potřebujete vlastní 3D/WebGL nebo B2B webovou aplikaci na klíč?",
+      "description": "Navrhujeme a vyvíjíme produkční Next.js architektury, interaktivní 3D shadery a e-commerce systémy s důrazem na rychlost a konverze.",
+      "button": "Poptat vývoj →"
     }
   },
   "templatesPage": {
