@@ -1,4 +1,24 @@
 import { getDictionary } from "@/get-dictionary";
+import CliCommandBar from "@/components/ui/CliCommandBar";
+
+const REGISTRY_ITEMS = [
+  {
+    name: "Wavy Sphere (3D WebGL)",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/wavy-sphere.json",
+  },
+  {
+    name: "Interactive Particles (3D Force Field)",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/particles.json",
+  },
+  {
+    name: "Glassmorphism & Conic Buttons",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/buttons.json",
+  },
+  {
+    name: "3D Holo Telemetry Card",
+    command: "npx shadcn@latest add https://labs.krokbit.cz/r/cards.json",
+  },
+];
 
 export default async function CliPage({
   params: { locale },
@@ -21,9 +41,16 @@ export default async function CliPage({
         </p>
       </div>
 
-      <div className="p-6 rounded-xl bg-[#050505] border border-white/10 space-y-4 font-mono text-xs break-all">
-        <div className="text-gray-500"># Install Wavy Sphere directly from Krokbit Registry</div>
-        <div className="text-emerald-400">$ npx shadcn@latest add https://labs.krokbit.cz/r/wavy-sphere.json</div>
+      <div className="space-y-4">
+        {REGISTRY_ITEMS.map((item) => (
+          <div
+            key={item.name}
+            className="p-5 rounded-xl bg-[#050505] border border-white/10 space-y-3"
+          >
+            <div className="text-xs font-mono text-gray-400"># {item.name}</div>
+            <CliCommandBar command={item.command} />
+          </div>
+        ))}
       </div>
 
       <div className="p-6 rounded-xl bg-white/[0.02] border border-white/10 space-y-3">

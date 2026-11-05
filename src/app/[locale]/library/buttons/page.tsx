@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/get-dictionary";
 import ComponentViewer from "@/components/ui/ComponentViewer";
+import CliCommandBar from "@/components/ui/CliCommandBar";
 
 export async function generateMetadata({
   params: { locale },
@@ -24,7 +25,7 @@ const BUTTONS_SOURCE_CODE = `export default function KrokbitButtons() {
       {/* 1. Autonomous Conic-Border Beam Button */}
       <button
         type="button"
-        className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none active:scale-95 transition-transform duration-200 shadow-[0_0_25px_rgba(52,211,153,0.15)]"
+        className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] outline-none focus:outline-none active:scale-95 transition-transform duration-200 shadow-[0_0_25px_rgba(52,211,153,0.15)]"
       >
         <span className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#10b981_50%,#00f0ff_75%,#000000_100%)]" />
         <span className="relative z-10 inline-flex h-full w-full items-center justify-center gap-3 rounded-[11px] bg-[#050505] px-6 py-2 text-xs font-mono uppercase tracking-wider text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
@@ -39,7 +40,7 @@ const BUTTONS_SOURCE_CODE = `export default function KrokbitButtons() {
       {/* 2. True Multi-Layer Glassmorphism Button */}
       <button
         type="button"
-        className="relative px-7 h-12 rounded-xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white text-sm font-medium tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-10px_20px_rgba(0,240,255,0.12)] hover:bg-white/[0.14] hover:border-white/35 active:scale-95 transition-all duration-200 flex items-center gap-2.5 focus:outline-none"
+        className="relative px-7 h-12 rounded-xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white text-sm font-medium tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-10px_20px_rgba(0,240,255,0.12)] hover:bg-white/[0.14] hover:border-white/35 active:scale-95 transition-[transform,background-color,border-color,box-shadow] duration-200 flex items-center gap-2.5 outline-none focus:outline-none"
       >
         <span className="text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">✦</span>
         <span>Initialize WebGL</span>
@@ -48,7 +49,7 @@ const BUTTONS_SOURCE_CODE = `export default function KrokbitButtons() {
       {/* 3. Tactile Hardware Command Trigger */}
       <button
         type="button"
-        className="group h-12 px-5 rounded-xl bg-gradient-to-b from-zinc-800/90 to-zinc-950 border border-white/15 text-gray-200 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:text-white hover:border-emerald-400/40 active:scale-95 transition-all duration-150 flex items-center gap-3 focus:outline-none"
+        className="group h-12 px-5 rounded-xl bg-gradient-to-b from-zinc-800/90 to-zinc-950 border border-white/15 text-gray-200 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:text-white hover:border-emerald-400/40 active:scale-95 transition-[transform,border-color,color,box-shadow] duration-150 flex items-center gap-3 outline-none focus:outline-none"
       >
         <span>Execute CLI</span>
         <kbd className="px-2 py-0.5 text-[11px] font-mono text-emerald-400 bg-black/80 border border-emerald-400/30 rounded-md">
@@ -112,7 +113,7 @@ export default async function ButtonsPage({
           {/* 1. Autonomous Conic-Border Beam Button */}
           <button
             type="button"
-            className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] focus:outline-none active:scale-95 transition-transform duration-200 shadow-[0_0_25px_rgba(52,211,153,0.15)]"
+            className="relative inline-flex h-12 overflow-hidden rounded-xl p-[1px] outline-none focus:outline-none active:scale-95 transition-transform duration-200 shadow-[0_0_25px_rgba(52,211,153,0.15)]"
           >
             <span className="absolute inset-[-1000%] animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#000000_0%,#10b981_50%,#00f0ff_75%,#000000_100%)]" />
             <span className="relative z-10 inline-flex h-full w-full items-center justify-center gap-3 rounded-[11px] bg-[#050505] px-6 py-2 text-xs font-mono uppercase tracking-wider text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.2)]">
@@ -127,7 +128,7 @@ export default async function ButtonsPage({
           {/* 2. True Multi-Layer Glassmorphism Button */}
           <button
             type="button"
-            className="relative px-7 h-12 rounded-xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white text-sm font-medium tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-10px_20px_rgba(0,240,255,0.12)] hover:bg-white/[0.14] hover:border-white/35 active:scale-95 transition-all duration-200 flex items-center gap-2.5 focus:outline-none"
+            className="relative px-7 h-12 rounded-xl bg-white/[0.08] backdrop-blur-xl border border-white/20 text-white text-sm font-medium tracking-wide shadow-[inset_0_1px_1px_rgba(255,255,255,0.4),inset_0_-10px_20px_rgba(0,240,255,0.12)] hover:bg-white/[0.14] hover:border-white/35 active:scale-95 transition-[transform,background-color,border-color,box-shadow] duration-200 flex items-center gap-2.5 outline-none focus:outline-none"
           >
             <span className="text-[#00f0ff] drop-shadow-[0_0_8px_rgba(0,240,255,0.8)]">
               ✦
@@ -138,7 +139,7 @@ export default async function ButtonsPage({
           {/* 3. Tactile Hardware Command Trigger */}
           <button
             type="button"
-            className="group h-12 px-5 rounded-xl bg-gradient-to-b from-zinc-800/90 to-zinc-950 border border-white/15 text-gray-200 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:text-white hover:border-emerald-400/40 active:scale-95 transition-all duration-150 flex items-center gap-3 focus:outline-none"
+            className="group h-12 px-5 rounded-xl bg-gradient-to-b from-zinc-800/90 to-zinc-950 border border-white/15 text-gray-200 text-sm font-medium shadow-[inset_0_1px_0_rgba(255,255,255,0.25)] hover:text-white hover:border-emerald-400/40 active:scale-95 transition-[transform,border-color,color,box-shadow] duration-150 flex items-center gap-3 outline-none focus:outline-none"
           >
             <span>Execute CLI</span>
             <kbd className="px-2 py-0.5 text-[11px] font-mono text-emerald-400 bg-black/80 border border-emerald-400/30 rounded-md">
@@ -147,6 +148,11 @@ export default async function ButtonsPage({
           </button>
         </div>
       </ComponentViewer>
+
+      <div className="space-y-3">
+        <h2 className="text-xl font-semibold text-white">CLI Installation</h2>
+        <CliCommandBar command="npx shadcn@latest add https://labs.krokbit.cz/r/buttons.json" />
+      </div>
 
       <div className="space-y-3">
         <h2 className="text-xl font-semibold text-white">
