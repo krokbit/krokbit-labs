@@ -59,7 +59,10 @@ export default async function TemplatesPage({
                 <div className="h-44 rounded-xl bg-gradient-to-br from-emerald-500/20 via-emerald-950/30 to-black border border-white/10 mb-6 flex items-center justify-center relative overflow-hidden">
                   <div className="grid grid-cols-4 gap-2 opacity-70">
                     {Array.from({ length: 12 }).map((_, idx) => (
-                      <div key={idx} className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                      <div
+                        key={idx}
+                        className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]"
+                      />
                     ))}
                   </div>
                   <span className="absolute top-3 right-3 px-2.5 py-1 text-[10px] font-mono uppercase bg-black/80 text-emerald-400 border border-emerald-400/30 rounded">
